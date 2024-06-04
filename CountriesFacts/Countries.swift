@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Countries: Codable {
+    var pages: [Country]
+}

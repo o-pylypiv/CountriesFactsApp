@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Country: Codable {
+    var name: String
+    var capital: String
+    var currency: String
+    var population: String
+    var shortDescription: String
+}
