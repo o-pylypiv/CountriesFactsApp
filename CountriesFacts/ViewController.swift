@@ -53,7 +53,8 @@ class ViewController: UITableViewController {
     func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonCountries = try? decoder.decode(Countries.self, from: json) {
-            countries = jsonCountries.pages
+            //countries = jsonCountries.pages
+            countries = jsonCountries.pages.sorted { $0.name < $1.name }
 //tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
             DispatchQueue.main.async {
                 [weak self] in

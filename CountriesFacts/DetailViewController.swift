@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(shareTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
         title = detailItem?.name
         guard let detailItem = detailItem else {return}
@@ -45,7 +45,8 @@ class DetailViewController: UIViewController {
     
     @objc func shareTapped() {
         if let detailItem = detailItem {
-            let vc = UIActivityViewController(activityItems: [detailItem.name, detailItem.capital, detailItem.population, detailItem.currency, detailItem.shortDescription], applicationActivities: [])
+            let info = [detailItem.name, detailItem.capital, detailItem.population, detailItem.currency, detailItem.shortDescription].joined(separator: "\n")
+            let vc = UIActivityViewController(activityItems: [info], applicationActivities: [])
             vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
             present(vc, animated: true)
         }
